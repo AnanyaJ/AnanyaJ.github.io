@@ -86,19 +86,6 @@ a:hover {
   text-decoration-color: currentColor;
 }
 
-/* The arrow marks a link that leaves the site, so pages on it do without. */
-a.internal::after {
-  content: none;
-}
-
-.note {
-  color: var(--muted);
-}
-
-.note::before {
-  content: "\00a0\2014\00a0";
-}
-
 a::after {
   content: " \2197";
   color: var(--muted);
