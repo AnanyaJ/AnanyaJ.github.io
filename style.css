@@ -33,6 +33,15 @@ main {
   padding: 6rem 1.25rem 4rem;
 }
 
+.avatar {
+  display: block;
+  width: 6rem;
+  height: 6rem;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 h1 {
   margin: 0;
   font-size: inherit;
