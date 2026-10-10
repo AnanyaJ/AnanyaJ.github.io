@@ -1,0 +1,194 @@
+/* Kindly — calm, warm, unhurried. The visual argument is that plant cooking is
+   ordinary and pleasant, so nothing here should shout. */
+:root {
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --surface-2: #f3efe7;
+  --ink: #2c2a26;
+  --ink-soft: #625d55;
+  --ink-faint: #8b857b;
+  --line: #e4ded2;
+  --accent: #3f6b52;
+  --accent-soft: #e8f0e9;
+  --accent-ink: #2b4d3a;
+  --warn: #8a5a2b;
+  --warn-soft: #f7eede;
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(44,42,38,.05), 0 8px 24px rgba(44,42,38,.05);
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171916; --surface: #1f221e; --surface-2: #262a24;
+    --ink: #ece8e0; --ink-soft: #b3aea4; --ink-faint: #8a857c;
+    --line: #333830; --accent: #8fc0a2; --accent-soft: #24312a; --accent-ink: #a9d4ba;
+    --warn: #d9a86a; --warn-soft: #33291c;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.55; }
+a { color: var(--accent-ink); }
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; margin: 0 0 .4em; letter-spacing: -.01em; }
+h1 { font-size: clamp(2rem, 5vw, 2.9rem); }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.1rem; }
+p { margin: 0 0 1em; }
+.quiet { color: var(--ink-faint); font-size: .85rem; }
+
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1rem clamp(1rem, 4vw, 2.5rem); border-bottom: 1px solid var(--line); background: var(--surface); position: sticky; top: 0; z-index: 20; }
+.brand { display: flex; align-items: center; gap: .55rem; text-decoration: none; color: var(--ink); }
+.brand-mark { font-size: 1.4rem; }
+.brand-name { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; }
+.topbar nav { display: flex; align-items: center; gap: 1rem; font-size: .92rem; }
+.llm-badge { font-size: .74rem; padding: .2rem .55rem; border-radius: 100px; background: var(--warn-soft); color: var(--warn); border: 1px solid color-mix(in srgb, var(--warn) 25%, transparent); }
+
+main { max-width: 940px; margin: 0 auto; padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 4vw, 2rem) 4rem; }
+.hero { text-align: center; padding: clamp(1rem, 6vw, 4rem) 0 1rem; }
+.lede { color: var(--ink-soft); font-size: 1.08rem; max-width: 34rem; margin: 0 auto 2rem; }
+.search { display: flex; gap: .6rem; max-width: 34rem; margin: 0 auto; }
+.search input { flex: 1; min-width: 0; padding: .85rem 1.1rem; font-size: 1rem; font-family: inherit; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 100px; box-shadow: var(--shadow); }
+.search input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.hint { margin-top: .9rem; font-size: .85rem; color: var(--ink-faint); }
+
+button { font-family: inherit; font-size: .95rem; cursor: pointer; border-radius: 100px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink); padding: .6rem 1.1rem; transition: background .15s, border-color .15s; }
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:disabled { opacity: .5; cursor: default; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; padding: .85rem 1.5rem; font-weight: 500; }
+@media (prefers-color-scheme: dark) { button.primary { color: #10231a; } }
+button.primary:hover:not(:disabled) { filter: brightness(1.07); }
+button.kindness { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 35%, transparent); color: var(--accent-ink); font-weight: 500; padding: .8rem 1.4rem; }
+button.ghost { background: transparent; }
+button.tiny { padding: .3rem .7rem; font-size: .8rem; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.2rem 1.35rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 1rem; }
+.recipe-card { text-align: left; display: flex; flex-direction: column; gap: .45rem; align-items: stretch; padding: 1.1rem 1.25rem; border-radius: var(--radius); }
+.recipe-card:hover { border-color: var(--accent); }
+.recipe-card .emoji { font-size: 1.6rem; }
+.recipe-card h3 { margin: 0; }
+.recipe-card p { margin: 0; color: var(--ink-soft); font-size: .9rem; }
+.meta { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .2rem; }
+.tag { font-size: .72rem; letter-spacing: .02em; text-transform: uppercase; padding: .18rem .5rem; border-radius: 100px; background: var(--surface-2); color: var(--ink-faint); border: 1px solid var(--line); }
+.tag.plant { background: var(--accent-soft); color: var(--accent-ink); border-color: color-mix(in srgb, var(--accent) 25%, transparent); }
+.tag.new { background: var(--warn-soft); color: var(--warn); border-color: color-mix(in srgb, var(--warn) 25%, transparent); }
+
+.section { margin: 2.4rem 0; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: .9rem; }
+.section-head p { margin: 0; }
+
+.recipe-head { display: flex; gap: 1rem; align-items: flex-start; flex-wrap: wrap; }
+.recipe-head .emoji { font-size: 2.6rem; line-height: 1; }
+.facts { display: flex; flex-wrap: wrap; gap: 1.4rem; margin: 1rem 0 0; padding: 0; list-style: none; color: var(--ink-soft); font-size: .9rem; }
+.facts b { display: block; color: var(--ink); font-size: 1.05rem; font-weight: 600; }
+
+.columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 2rem; align-items: start; }
+@media (max-width: 720px) { .columns { grid-template-columns: 1fr; } }
+ul.ingredients { list-style: none; padding: 0; margin: 0; }
+ul.ingredients li { padding: .45rem 0; border-bottom: 1px dashed var(--line); display: flex; gap: .6rem; justify-content: space-between; font-size: .95rem; }
+ul.ingredients li:last-child { border-bottom: 0; }
+ul.ingredients .amount { color: var(--ink-faint); white-space: nowrap; font-variant-numeric: tabular-nums; }
+li.swapped { background: linear-gradient(90deg, var(--accent-soft), transparent 70%); margin: 0 -.5rem; padding-inline: .5rem; border-radius: 6px; }
+ol.steps { padding-left: 1.2rem; margin: 0; }
+ol.steps li { margin-bottom: .9rem; }
+
+.kindness-bar { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; justify-content: space-between;
+  background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius: var(--radius); padding: 1.1rem 1.3rem; margin: 1.6rem 0; }
+.kindness-bar p { margin: 0; color: var(--accent-ink); font-size: .95rem; max-width: 34rem; }
+.toggle { display: inline-flex; background: var(--surface); border: 1px solid var(--line); border-radius: 100px; padding: 3px; gap: 2px; }
+.toggle button { border: 0; background: transparent; padding: .35rem .85rem; font-size: .85rem; border-radius: 100px; color: var(--ink-soft); }
+.toggle button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+@media (prefers-color-scheme: dark) { .toggle button[aria-pressed="true"] { color: #10231a; } }
+
+.benefit { display: flex; gap: .7rem; padding: .7rem 0; border-bottom: 1px solid var(--line); }
+.benefit:last-child { border-bottom: 0; }
+.benefit .icon { flex: none; width: 1.4rem; text-align: center; }
+.benefit b { display: block; }
+.benefit span { color: var(--ink-soft); font-size: .9rem; }
+.benefit.caveat b { color: var(--warn); }
+
+table.macros { width: 100%; border-collapse: collapse; font-size: .92rem; }
+table.macros th, table.macros td { text-align: right; padding: .45rem .3rem; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+table.macros th:first-child, table.macros td:first-child { text-align: left; }
+table.macros thead th { color: var(--ink-faint); font-weight: 500; font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; }
+.delta { font-size: .82rem; }
+.delta.down { color: var(--accent-ink); }
+.delta.up { color: var(--warn); }
+
+.bars { display: grid; gap: .6rem; }
+.bar-row { display: grid; grid-template-columns: 5.5rem 1fr 2.6rem; gap: .7rem; align-items: center; font-size: .88rem; }
+.bar { height: 7px; border-radius: 100px; background: var(--surface-2); overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--accent); }
+
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: .8rem; }
+.fields label { display: block; font-size: .8rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .03em; }
+.fields input, select { width: 100%; padding: .55rem .7rem; font-size: .95rem; font-family: inherit; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--line); border-radius: 9px; margin-top: .25rem; }
+
+.aisle { margin: 1.3rem 0 .5rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-faint); }
+.item { display: flex; gap: .7rem; align-items: flex-start; padding: .55rem 0; border-bottom: 1px solid var(--line); }
+.item input { margin-top: .35rem; accent-color: var(--accent); }
+.item.checked label { text-decoration: line-through; color: var(--ink-faint); }
+.item .price { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--ink-soft); white-space: nowrap; }
+.item small { display: block; color: var(--ink-faint); }
+
+.note { background: var(--surface-2); border-left: 3px solid var(--accent); padding: .8rem 1rem; border-radius: 0 9px 9px 0; margin: 1rem 0; font-size: .93rem; }
+.note.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+.spinner { display: inline-block; width: 1em; height: 1em; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin .7s linear infinite; vertical-align: -.15em; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.center { text-align: center; padding: 3rem 1rem; color: var(--ink-soft); }
+.error { color: var(--warn); }
+.provenance { font-size: .8rem; color: var(--ink-faint); border-top: 1px solid var(--line); padding-top: .8rem; margin-top: 1.4rem; }
+.footer { max-width: 940px; margin: 0 auto; padding: 2rem clamp(1rem, 4vw, 2rem) 3rem; border-top: 1px solid var(--line); color: var(--ink-faint); font-size: .85rem; }
+.row { display: flex; gap: .7rem; flex-wrap: wrap; align-items: center; }
+.stack > * + * { margin-top: 1.1rem; }
+
+/* Two-sided macro axes. Two overlapping range inputs sit transparently on top
+   of a shared rail; only their thumbs take pointer events, so each handle is
+   independently draggable. Ported from platemath's .dual control. */
+.axes { display: grid; gap: 1.1rem; margin-top: 1.2rem; }
+.axis-h { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .35rem; }
+.axis-n { font-size: .88rem; }
+.axis-v { font-size: .85rem; color: var(--accent-ink); font-variant-numeric: tabular-nums; }
+.axis-v.inert { color: var(--ink-faint); }
+
+.dual { position: relative; height: 22px; }
+.dual .rail { position: absolute; left: 0; right: 0; top: 9px; height: 4px; border-radius: 2px; background: var(--surface-2); }
+.dual .fill { position: absolute; top: 9px; height: 4px; border-radius: 2px; background: var(--accent); transition: left .12s, right .12s; }
+.dual input[type=range] {
+  position: absolute; left: 0; top: 0; width: 100%; height: 22px; margin: 0;
+  -webkit-appearance: none; appearance: none; background: transparent; pointer-events: none;
+}
+.dual input[type=range]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.dual input[type=range]::-webkit-slider-runnable-track { height: 22px; background: transparent; border: none; }
+.dual input[type=range]::-moz-range-track { height: 22px; background: transparent; border: none; }
+.dual input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; pointer-events: auto; cursor: grab;
+  width: 16px; height: 16px; border-radius: 50%; margin-top: 3px;
+  background: var(--surface); border: 2px solid var(--accent); box-shadow: var(--shadow);
+}
+.dual input[type=range]::-moz-range-thumb {
+  pointer-events: auto; cursor: grab;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--accent); box-shadow: var(--shadow);
+}
+.dual input[type=range]:active::-webkit-slider-thumb { cursor: grabbing; }
+
+td.in-range { color: var(--accent-ink); font-weight: 600; }
+td.out-range { color: var(--warn); }
+
+/* The site-level diet toggle. Small on purpose: it is a setting someone touches
+   once, not a decision to re-present on every recipe. */
+.toggle.mini { padding: 2px; }
+.toggle.mini button { padding: .25rem .6rem; font-size: .78rem; }
+@media (max-width: 560px) {
+  .toggle.mini button { padding: .25rem .45rem; font-size: .72rem; }
+  .topbar nav { gap: .6rem; }
+}
+
+.instacart-link { font-weight: 600; }
