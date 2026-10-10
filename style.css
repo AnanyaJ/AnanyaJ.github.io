@@ -35,8 +35,8 @@ main {
 
 .avatar {
   display: block;
-  width: 10rem;
-  height: 10rem;
+  width: 12rem;
+  height: 12rem;
   margin-bottom: 2rem;
   border-radius: 50%;
   object-fit: cover;
